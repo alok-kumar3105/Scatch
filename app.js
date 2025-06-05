@@ -13,7 +13,8 @@ const usersRouter=require('./routes/usersRouter');
 const productsRouter=require('./routes/productsRouter');
 const index=require('./routes/index');
 
-require('dotenv').config();
+const expressSession=require('express-session');
+const flash=require("connect-flash");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
