@@ -6,7 +6,11 @@ router.get('/', function(req, res){
     res.send('hey');
 })
 
-router.post('/create', createUser);
+// router.post('/create', createUser);
+
+// router.post('/create', (req, res)=>{
+//     console.log(req.body);
+// })
 
 router.post('/login', loginUser);
 

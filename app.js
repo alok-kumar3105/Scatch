@@ -25,9 +25,21 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(expressSession({
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.EXPRESS_SESSION_SECRET
+}));
+
+app.use(flash()); 
+
 app.use('/', index);
 app.use('/owners', ownersRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
+app.post('/users/create', (req, res)=>{
+    console.log(req.body);
+    res.send('h')
+})
 app.use('/products', productsRouter);
 
 app.listen(3000);
