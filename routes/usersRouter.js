@@ -1,17 +1,13 @@
 const express=require('express');
 const router = express.Router();
-const {createUser, loginUser}=require('../controllers/authController');
+const isLoggedIn=require('../middlewares/isLoggedIn');
+const {createUser, loginUser, logout}=require('../controllers/authController');
 
-router.get('/', function(req, res){
-    res.send('hey');
-})
 
-// router.post('/create', createUser);
-
-// router.post('/create', (req, res)=>{
-//     console.log(req.body);
-// })
+router.post('/create', createUser)
 
 router.post('/login', loginUser);
+
+router.get('/logout', logout);
 
 module.exports = router;

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+
+
+    <div class="h-screen">
+
+        <div class="fixed z-50 h-22 bg-white w-full flex justify-between items-center nav px-15 py-5 border-b-2 border-zinc-400">
+
+            <% if(success.length>0){ %>
+                <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+                    <span class="inline-block mt-1 mb-1 text-white">
+                        <%= success[0] %>
+                    </span>
+                </div>
+            <% } %>
+
+            <div class="text-4xl mt-2">
+
+                Shop
+
+            </div>
+
+            <div  class="flex items-center gap-10 mt-2 font-semibold">
+
+                <a href="">Shop</a>
+                <a href="" class="mr-13">Cart</a>
+                <a href="">My Account</a>
+                <a href="/users/logout" class="bg-[#b23b3b] text-white rounded-lg px-2 py-1 mr-15">Logout</a>
+
+            </div>
+
+        </div>
+
+        <div class="flex">
+
+            <div class="w-75 bg-white mt-20 fixed h-400 tracking-tighter pl-15 py-12 left">
+
+                <div>
+                    <form action="">
+                        <label class="text-xl" for="sortby">sort by </label>
+                        <select class="border-2 border-zinc-300" name="sortby" id="sortby">
+                            <option value="newest">Newest</option>
+                            <option value="popular">Popular</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="mt-15 flex-col gap-2">
+                    <div><a>New Collection</a></div>
+                    <div><a>All Products</a></div>
+                    <div><a>Discounted Products</a></div>
+                </div>
+
+                <div class="mt-20 flex-col gap-2">
+                    <div><a>Filter by:</a></div>
+                    <div><a>Availability</a></div>
+                    <div><a>Discount</a></div>
+                </div>
+
+            </div>
+
+            <div class="">
+
+                <div class="ml-75 py-6 pr-10 mt-20 gap-x-15 gap-y-10 flex flex-wrap right">
+                    
+                    <% all_products.forEach(function(product){ %>
+                        <div class="min-h-60 w-48 bg-[<%= product.bgcolor %>] flex flex-col justify-between">
+
+                            <div class="flex justify-center items-center h-43 w-full"><img class="h-[90%]" src="data:image/png;base64,<%= product.image.toString('base64') %>" alt="dfgh"></div>
+
+                            <div class="flex text-sm text-[<%= product.textcolor %>] justify-between min-h-17 w-full bg-[<%= product.panelcolor %>] p-2 items-center">
+
+                                <div>
+
+                                    <div><%= product.name %></div>
+                                    <div>$<%= product.price %></div>
+
+                                </div>
+
+                                <a href="/addtocart/<%= product._id %>"><div class="p-1 flex items-center justify-center rounded-3xl bg-white h-5">+</div></a>
+
+                            </div>
+
+                        </div>
+                    <% }) %>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
 </head>
 <body>
 
+    <% if(error.length>0){ %>
+        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 ">
+            <span class="inline-block mt-1 mb-1 text-white                                      ">
+                <%= error %>
+            </span>
+        </div>
+    <% } %>
     <div class="w-full h-screen grid grid-rows-[85px_auto]">
         
-        <div class=" w-full grid grid-cols-2">  
+        <div class="w-full grid grid-cols-2">  
 
             <div class="text-3xl p-8 px-15 font-bold text-black-900">Scatch</div>
 
