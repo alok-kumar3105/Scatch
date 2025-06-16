@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+
+
+    <div class="h-screen">
+
+        <div class="fixed bg-[#494D5F] text-white z-50 h-22 w-full flex justify-between items-center nav px-15 py-5 border-b-2 border-zinc-400">
+
+
+            <div class="text-4xl mt-2">
+
+                <a href="/shop">Scatch</a>
+
+            </div>
+
+            <div  class="flex items-center gap-10 mt-2 font-semibold">
+
+                <a href="/shop">Shop</a>
+                <a href="/cart" class="mr-13 flex relative">
+                    <div>Cart</div>
+                    <div class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m480-560-56-56 63-64H320v-80h167l-64-64 57-56 160 160-160 160ZM280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM40-800v-80h131l170 360h280l156-280h91L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68.5-39t-1.5-79l54-98-144-304H40Z"/></svg></div>
+                    <div class="top-[-10px] right-[-10px] absolute bg-red-400 px-1 rounded-[50%] text-white text-xs"><%= user.cart.length %></div>
+                </a>
+                <a href="/profile" class="border-b-2 border-zinc-400">My Account</a>
+                <a href="/users/logout" class="bg-[#b23b3b] text-white rounded-lg px-2 py-1 mr-15">Logout</a>
+
+            </div>
+
+        </div>
+
+        <div class="flex justify-center items-center bg-gradient-to-br from-[#e0e7ef] via-[#b7c6d9] to-[#f7cac9] pt-28 pb-7">
+            <div class="bg-[#f5f6fa] rounded-2xl shadow-2xl p-10 w-full max-w-2xl">
+            <div class="flex items-center gap-6 mb-8">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-[#b23b3b] to-[#b7c6d9] flex items-center justify-center text-white text-4xl font-bold">
+                <%= user.fullname.charAt(0).toUpperCase() %>
+                </div>
+                <div>
+                <h2 class="text-3xl font-bold text-[#494D5F] mb-1">Edit Profile</h2>
+                <p class="text-zinc-700 text-lg"><%= user.email %></p>
+                </div>
+            </div>
+            <form action="/profile/edit" method="POST" class="border-t border-zinc-300 pt-6">
+                <h3 class="text-xl font-semibold text-[#b23b3b] mb-4">Update Your Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="fullname" class="block text-zinc-500 font-medium mb-1">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" value="<%= user.fullname %>" class="bg-[#e0e7ef] rounded-lg px-4 py-2 text-[#494D5F] w-full focus:outline-none focus:ring-2 focus:ring-[#b23b3b]" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-zinc-500 font-medium mb-1">Email</label>
+                    <input type="email" id="email" name="email" value="<%= user.email %>" class="bg-[#e0e7ef] rounded-lg px-4 py-2 text-[#494D5F] w-full opacity-60 cursor-not-allowed" disabled>
+                </div>
+                <div>
+                    <label for="phone" class="block text-zinc-500 font-medium mb-1">Phone</label>
+                    <input type="number" id="phone" name="phone" value="<%= user.contact || '' %>" class="bg-[#e0e7ef] rounded-lg px-4 py-2 text-[#494D5F] w-full focus:outline-none focus:ring-2 focus:ring-[#b23b3b]">
+                </div>
+                <div>
+                    <label for="address" class="block text-zinc-500 font-medium mb-1">Address</label>
+                    <input type="text" id="address" name="address" value="<%= user.address || '' %>" class="bg-[#e0e7ef] rounded-lg px-4 py-2 text-[#494D5F] w-full focus:outline-none focus:ring-2 focus:ring-[#b23b3b]">
+                </div>
+                </div>
+                <div class="mt-8 flex justify-between">
+                <a href="/profile" class="bg-[#7DB0F1] hover:bg-[#A9CDFB] text-[#494D5F] px-6 py-2 rounded-lg font-semibold transition">Cancel</a>
+                <button type="submit" class="bg-[#b23b3b] hover:bg-[#D36664] text-white px-6 py-2 rounded-lg font-semibold transition">Save Changes</button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

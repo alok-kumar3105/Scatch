@@ -12,6 +12,7 @@ const ownersRouter=require('./routes/ownersRouter');
 const usersRouter=require('./routes/usersRouter');
 const productsRouter=require('./routes/productsRouter');
 const index=require('./routes/index');
+const cartsRouter=require('./routes/cartsRouter');
 
 const expressSession=require('express-session');
 const flash=require("connect-flash");
@@ -37,5 +38,6 @@ app.use('/', index);
 app.use('/owners', ownersRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/cart', cartsRouter);
 
 app.listen(3000);

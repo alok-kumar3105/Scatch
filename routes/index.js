@@ -12,16 +12,24 @@ router.get('/', function(req,res){
 router.get('/shop', isLoggedIn, async (req, res)=>{
     let all_products=await productModel.find();
     let success=req.flash("success");
-    res.render('shop', {all_products, success});
+    res.render('shop', {all_products, success, user: req.user});
+});
+
+router.get('/profile/edit', isLoggedIn, async (req, res)=>{
+    let user = await userModel.findOne({email: req.user.email});
+    res.render('editProfile', {user});
 })
 
-router.get('/addtocart/:id', isLoggedIn, async function(req, res){
-    let id=req.params.id;
+router.post('/profile/edit', isLoggedIn, async (req, res)=>{
+    let {fullname, phone, address}=req.body;
+    console.log(phone);
+    let user = await userModel.findOneAndUpdate({email: req.user.email}, {fullname, contact:phone, address}, {new: true});
+    res.redirect('/profile');
+})
+
+router.get('/profile', isLoggedIn, async(req, res)=>{
     let user= await userModel.findOne({email: req.user.email});
-    user.cart.push(id);
-    await user.save();
-    req.flash("success", "Product added to cart!");
-    res.redirect('/shop');
+    res.render('userProfile', {user});
 })
  
 module.exports = router;
