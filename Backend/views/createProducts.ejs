@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+    <% if(success.length>0){ %>
+        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+            <span class="inlind-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+    <% } %>
+
+    <div class="h-screen">
+
+        <div class="flex justify-between items-center nav px-15 py-5 border-b-2 border-zinc-400">
+
+            <div class="text-4xl mt-2">
+
+                Admin Panel
+
+            </div>
+
+            <div  class="flex gap-10 mt-2 font-semibold">
+
+                <a href="">Home</a>
+                <a href="" class="mr-13">Products</a>
+                <a href="">Cart</a>
+                <a href="" class="mr-15">My Account</a>
+
+            </div>
+
+        </div>
+
+        <div class="flex">
+
+            <div class="w-95 tracking-tighter pl-15 py-12 left">
+
+                <div class="mb-3">
+
+                    All Products
+
+                </div>
+
+                <div>
+
+                    Create New Product
+
+                </div>
+
+            </div>
+
+            <div class="right w-full">
+
+                <div class="pt-10 font-semibold pb-5 border-b-2 border-zinc-300 text-3xl tracking-tighter">
+
+                    Create New Product
+
+                </div>
+
+                <div class="pl-3 w-100 py-5">
+
+                    <form autocomplete="off" class="flex gap-7 flex-col h-full items-left" action="/products/create" method="post" enctype="multipart/form-data">
+
+                        <div class="flex flex-col gap-3">
+
+                            <div class="font-semibold text-2xl mb-1">Product Details</div>
+                            <label class="cursor-pointer w-61 flex gap-4 items-center" for="chooseImage">
+                                <div class="font-semibold">Product Image</div>
+                                <div class="text-center rounded-3xl text-white py-2 bg-blue-500 w-30 tracking-tighter">Select File</div>
+                            </label>
+                            <input id="chooseImage" class="hidden" type="file" name="image" value="Product Image">
+                            <input class="px-3 p-2 bg-zinc-200 rounded-md" type="text" name="name" placeholder="Product Name">
+                            <div class="flex gap-5">
+                                <input class="px-3 p-2 bg-zinc-200 rounded-md w-42" type="text" name="price" placeholder="Product Price">
+                                <input class="px-3 p-2 bg-zinc-200 rounded-md w-42" type="text" name="discount" placeholder="Discount Price">
+                            </div>
+
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+
+                            <div class="font-semibold text-2xl mb-1">Panel Details</div>
+                            <div class="flex gap-5">
+                                <input class="px-3 p-2 bg-zinc-200 rounded-md w-46" type="text" name="bgcolor" placeholder="Background Color">
+                                <input class="px-3 p-2 bg-zinc-200 rounded-md w-46" type="text" name="panelcolor" placeholder="Panel Color">
+                            </div>
+                            <input class="px-3 p-2 bg-zinc-200 rounded-md w-46" type="text" name="textcolor" placeholder="Text Color">
+
+                            <input class="bg-blue-500 cursor-pointer rounded-3xl mt-3 text-white tracking-tighter w-45 px-3 py-2" type="submit" value="Create New Product">
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
